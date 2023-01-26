@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap-v5.css" rel="stylesheet"/>
+    <link href="roboto-fonts.css" rel="stylesheet" />
+<title>Electric Daily Log - ONGC</title>
+<link rel="stylesheet" type="text/css" media="screen" href="electrical_multi_step.css">
+<link rel="stylesheet" type="text/css" media="screen" href="style.css">
+</head>
+
+<body>
+  
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid d-flex justify-content-between align-items-end">
+      <div class="d-flex align-items-end">
+        <a class="navbar-brand" href="/">
+          <img src="Assets/Logo.png" alt="Logo" width="80" height="80" class="d-inline-block" />
+        </a>
+        <h6 class="tagline my-0" style="color: darkred"> Oil and Natural Gas Corporation Limited <p style="font-size: 10px; color: black" class="mb-2"> A Maharatna Company </p>
+        </h6>
+      </div>
+
+      
+      <a href="/search/" class="text-decoration-none">
+        <img src="search.png" width="35" height="35"  class="mx-2 d-inline-block align-bottom" alt="" />
+        ElasticSearch
+      </a>
+
+      <div class="navbeaut">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Project</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item text-primary" href="#">CAP</a>
+                </li>
+                <li>
+                  <a class="dropdown-item text-primary" href="/about-sas/">SAS</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-primary" href="/ocrfiles/">Upload Files</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-primary" href="/account/logout/">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+
+    </div>
+  </nav>
+  <hr class="my-0" style="color: maroon; height: 3px; opacity: 1" />
+
+  
+
+  
+<!-- SECTION -->
+<section class="p-3">
+    <div class="container">
+        <div class="row justify-content-center align-items-center h-100">
+           
+
+            <!-- Form Steps / Progress Bar -->
+            <div class="container">
+                <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
+                    <!-- Step 1 -->
+                    <li class="form-stepper-active text-center form-stepper-list" step="1">
+                        <a class="mx-2 link-light">
+                            <span class="form-stepper-circle">
+                                <span>1</span>
+                            </span>
+                            <div class="label">Rig Details</div>
+                        </a>
+                    </li>
+
+                    <!-- Step 3 -->
+                    <li class="form-stepper-unfinished text-center form-stepper-list" step="2">
+                        <a class="mx-2 link-light">
+                            <span class="form-stepper-circle text-muted">
+                                <span>2</span>
+                            </span>
+                            <div class="label text-muted">Equipment Details</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Step Wise Form Content -->
+            <form action="/mechanical/report-electrical" method="POST" >
+                <input type="hidden" name="csrfmiddlewaretoken" value="Q1K7EbhGbF9852EHICIBPYa7GooSejIUb0iMU0OMTQQJh9XTmyD9UiJxbg0fhrGV">
+                <div><label for="From">From:</label>
+                <input type="date" value= id="From_electric" name="From_electric" />
+
+                <label for="To">To:</label>
+                <input type="date" value= id="To_electric" name="To_electric" />
+                <input type="submit" name="list" value="List Results" />
+
+                <a id="dlink" style="display:none;"></a>
+                <input type="button" onclick="tablesToElectrical(array2, 'Sheet2', 'electrical.xls')" value="Single Sheet Export ">
+<button  onclick="tablesToExcel(['export_table_to_excel_1','export_table_to_excel_2'], ['Rig Details','Equipment Details'], 'Electrical.xls', 'Excel')">Multiple Sheets Export</button>
+                </div><br>
+                <!-- Step 1 Content -->
+                <section id="step-1" class="form-step bg-light text-dark">
+                    <!-- Step 1 input fields -->
+                    <div class="row align-items-start">
+                        <div class="row">
+                            <div class ="col-md-12">
+                                <h4 id="bankOne-header">Rig Details</h4>
+                                <table id="export_table_to_excel_1" cellspacing="0" class="table" style="float: left">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th>S.No<id>
+                                        <th>Rigname </th>
+                                        <th>RigWellname </th>
+                                        <th>QHSE | DOC. NO. </th>
+                                        
+                                        <th>Location </th>
+                                        <th>Date </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>E-1400-11</td>
+                                        <td>9876</td>
+                                        <td>12df</td>
+                                        <td>Ahmedabad</td>
+                                        <td>Jan. 2, 2023, midnight</td>
+                                    
+                                    <tr>
+                                        <td>3</td>
+                                        <td>CW-50-IV</td>
+                                        <td>AJAC</td>
+                                        <td>12df</td>
+                                        <td>mumbai</td>
+                                        <td>Jan. 2, 2023, midnight</td>
+                                       
+                                        
+                                    
+                                    
+                                    <tr>
+                                        <td>4</td>
+                                        <td>ROM-50-VIII</td>
+                                        <td>AKAE_CBY</td>
+                                        <td>12df</td>
+                                        <td>Ahmedabad</td>
+                                        <td>Jan. 23, 2023, midnight</td>
+                                       
+                                        
+                                    
+                                    
+                                    <tr>
+                                        <td>5</td>
+                                        <td>IPS-M700-9</td>
+                                        <td>AKAJ</td>
+                                        <td>testn</td>
+                                        <td>DUB</td>
+                                        <td>Jan. 2, 2023, midnight</td>
+                                       
+                                        
+                                    
+                                    
+                                    <tr>
+                                        <td>6</td>
+                                        <td>E-1400-2</td>
+                                        <td>AK56</td>
+                                        <td>testn</td>
+                                        <td>Ahmedabad</td>
+                                        <td>Jan. 2, 2023, midnight</td>
+                                       
+                                        
+                                    
+                                    
+                                   
+                                </tr>
+                                </tbody>
+                                
+                                   
+                               
+                            </table>
+                        </div>
+                        </div>
+                    <br />
+                    </div>
+                    <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>
+                </section>
+
+                <!-- Step 2 Content, default hidden on page load. -->
+                <section id="step-2" class="form-step d-none bg-light text-dark">
+                    
+                    <div class="row align-items-start">
+                        <div class="row">
+                            <div class ="col-md-12">
+                                <h4 id="bankOne-header">Equipment Details</h4>
+                                <table id="export_table_to_excel_2" cellspacing="0" class="table" style="float: left">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th>Shift Type<id>
+                                        <th>Equipment Details </th>
+                                        <th>Equipment Status </th>
+                                        <th>Previous day Cumulative running hours </th>
+                                        <th>Running Hours during the shift </th>
+                                        <th>From (Hours) </th>
+                                        <th>To (Hours) </th> 
+                                        <th>Total Cumulative Running Hours<id>
+                                        <th>Remarks </th>
+                                        <th>Equipment Sent </th>
+                                        <th>DG-1 </th>
+                                        <th>Units </th>
+                                        <th>DG-2 </th>
+                                        <th>Units </th>    
+                                        <th>DG-3 </th>
+                                        <th>Units </th>
+                                        <th>DG-4 </th>
+                                        <th>Units </th>
+                                        <th>Failure Reports </th>
+                                        <th>Safety reports </th>                          
+                                        
+    
+                                    </tr>
+                                    
+                                      
+                                </thead>
+                                
+                                <tbody>
+                                    
+                                    <tr>
+                                        <td>Day Shift</td>
+                                        <td>MP1 Blower Motor,25HP</td>
+                                        <td>OK</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>11:45 a.m.</td>
+                                        <td>12:45 a.m.</td>
+                                        <td>3</td>
+                                        <td>Hi Everyone</td>
+                                        <td>Hi Everyone</td>
+                                        <td>0.03</td>
+                                        <td>kWh</td>
+                                        <td>0.03</td>
+                                        <td>kWh</td>
+                                        <td>0.03</td>
+                                        <td>kWh</td>
+                                        <td>0.02</td>
+                                        <td>kWh</td>
+                                        <td>Hi Everyone</td>
+                                        <td>Hi Everyone</td>
+                                    
+                                    
+                                   
+                                </tr>
+                                </tbody>
+                                
+                                   
+                               
+                            </table>
+                        </div>
+                        </div>
+
+                    <br />
+                    </div>
+                    <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
+                
+                  
+                    </div>
+                </section>
+                
+            </form>
+        </div>
+    </div>
+</section>
+<script src="jquery-min.js"></script>
+<script src="rig-dropdown.js"></script>
+
+
+
+<script src="bootstrap-v5.js"></script>
+<script src="electrical.js"></script>
+<script src="excel.js"></script>
+<script src="excel1.js"></script>
+<script src="excel2.js"></script>
+<script src="excel3.js"></script>
+<script src="new.js"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.4.1/jspdf.plugin.autotable.min.js"></script>
+  
+    <script src="jsHTMLtoPDF.js"></script>
+
+
+
+
+   
+</body>
+</html>

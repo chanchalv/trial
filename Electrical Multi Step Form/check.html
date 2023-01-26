@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="/static/Styles/bootstrap-v5.css" rel="stylesheet" />
+        <link href="/static/Styles/roboto-fonts.css" rel="stylesheet" />
+
+        <title>Electric Daily Log - ONGC</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="/static/Styles/electrical_multi_step.css" />
+
+        <link rel="stylesheet" type="text/css" media="screen" href="/static/Styles/style.css" />
+    </head>
+
+    <body>
+        <!-- Header -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid d-flex justify-content-between align-items-end">
+                <div class="d-flex align-items-end">
+                    <a class="navbar-brand" href="/">
+                        <img src="/static/Assets/Logo.png" alt="Logo" width="80" height="80" class="d-inline-block" />
+                    </a>
+                    <h6 class="tagline my-0" style="color: darkred;">
+                        Oil and Natural Gas Corporation Limited
+                        <p style="font-size: 10px; color: black;" class="mb-2">A Maharatna Company</p>
+                    </h6>
+                </div>
+
+                <a href="/search/">
+                    <img src="/static/Assets/search.png" width="40" height="40" alt="" />
+                </a>
+
+                <div class="navbeaut">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Project</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a class="dropdown-item text-primary" href="#">CAP</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-primary" href="/about-sas/">SAS</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-primary" href="/ocrfiles/">Upload Files</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-primary" href="/account/logout/">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <hr class="my-0" style="color: maroon; height: 3px; opacity: 1;" />
+
+        <!-- SECTION -->
+        <section class="p-5">
+            <div class="container">
+                <div class="row justify-content-center align-items-center h-100">
+                    <h2 class="text-center pb-3">
+                        ELECTRICAL DAILY LOG SHEET
+                    </h2>
+
+                    <!-- Form Steps / Progress Bar -->
+                    <div class="container">
+                        <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
+                            <!-- Step 1 -->
+                            <li class="form-stepper-active text-center form-stepper-list" step="1">
+                                <a class="mx-2 link-light">
+                                    <span class="form-stepper-circle">
+                                        <span>1</span>
+                                    </span>
+                                    <div class="label">Rig Details</div>
+                                </a>
+                            </li>
+
+                            <!-- Step 3 -->
+                            <li class="form-stepper-unfinished text-center form-stepper-list" step="2">
+                                <a class="mx-2 link-light">
+                                    <span class="form-stepper-circle text-muted">
+                                        <span>2</span>
+                                    </span>
+                                    <div class="label text-muted">Equipment Details</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Step Wise Form Content -->
+                    <form method="POST" action="/mechanical/electrical-log/" enctype="multipart/form-data" id="userAccountSetupForm" name="userAccountSetupForm" data-rigs-url="/mechanical/ajax/load-rigs/">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="wLKvMtAEBUUcbWy8aGDEUFFrBoX1LMQaP7V5AHaQXmoqvuBIJXOQBhdpkg0FBxuV" />
+
+                        <!-- Step 1 Content -->
+                        <section id="step-1" class="form-step bg-light text-dark">
+                            <!-- Step 1 input fields -->
+                            <div class="row align-items-start">
+                                <div class="col-4 my-2">
+                                    <label class="form-label">QHSE | DOC. NO.</label>
+                                    <input type="text" name="doc_no" maxlength="255" class="form-control" required id="id_doc_no" />
+                                </div>
+                                <br />
+                                <div class="col-4 my-2">
+                                    <label class="form-label">Well No.</label>
+                                    <select name="saswellname" class="form-control" required id="id_saswellname">
+                                        <option value="" selected>---------</option>
+
+                                        <option value="1">well-1</option>
+
+                                        <option value="2">well-2</option>
+                                    </select>
+                                </div>
+                                <br />
+                                <div class="col-4 my-2">
+                                    <label class="form-label">Rig</label>
+                                    <select name="sasrigname" class="form-control" required id="id_sasrigname">
+                                        <option value="" selected>---------</option>
+                                    </select>
+                                </div>
+                                <br />
+                                <div class="col-4 my-2">
+                                    <label class="form-label">Location</label>
+                                    <input type="text" name="location" maxlength="255" class="form-control" required id="id_location" />
+                                </div>
+                                <br />
+                                <div class="col-4 my-2">
+                                    <label class="form-label">DATE</label>
+                                    <input type="date" name="date" class="form-control" id="id_date" />
+                                </div>
+                            </div>
+                            <br />
+                            <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>
+                        </section>
+
+                        <!-- Step 2 Content, default hidden on page load. -->
+                        <section id="step-2" class="form-step d-none bg-light text-dark">
+                            <input type="hidden" name="form-TOTAL_FORMS" value="3" id="id_form-TOTAL_FORMS" /><input type="hidden" name="form-INITIAL_FORMS" value="0" id="id_form-INITIAL_FORMS" />
+                            <input type="hidden" name="form-MIN_NUM_FORMS" value="0" id="id_form-MIN_NUM_FORMS" /><input type="hidden" name="form-MAX_NUM_FORMS" value="1000" id="id_form-MAX_NUM_FORMS" />
+                            <!-- Step 2 input fields -->
+                            <div id="show-content">
+                                <div class="row align-items-start">
+                                    
+                                    <div class="col-4 offset-4 my-2">
+                                        <label class="form-label select-label">Shift Type</label>
+                                        <select name="form-0-shifttype" class="form-control" id="id_form-0-shifttype">
+                                            <option value="Day Shift" selected>First Shift</option>
+    
+                                            <option value="Night Shift">Second Shift</option>
+                                        </select>
+                                    </div>
+                                </div>
+    
+                                <div class="row align-items-start py-2">
+                                    <div class="col-6 my-2">
+                                        <label class="form-label">Job Caring Out During the Shift: Defect/Failure reports, if any</label>
+                                        <textarea name="form-0-job" cols="40" rows="3" class="form-control" id="id_form-0-job"></textarea>
+                                    </div>
+                                    <div class="col-6 my-2">
+                                        <label class="form-label select-label">Report on Safety/ Near Miss Accidents:</label>
+                                        <textarea name="form-0-safetyreport" cols="40" rows="3" class="form-control" id="id_form-0-safetyreport"></textarea>
+                                    </div>
+                                </div>
+                            
+                            
+                            <!-- Step 2 input fields -->
+                            <div id="hidden">
+                            <div class="row align-items-start">
+                                <div class="col-4 offset-4 my-2">
+                                    <label class="form-label select-label">Shift Type</label>
+                                    <select name="form-1-shifttype" class="form-control" id="id_form-1-shifttype">
+                                        <option value="Day Shift" selected>First Shift</option>
+
+                                        <option value="Night Shift">Second Shift</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-start py-2">
+                                <div class="col-6 my-2">
+                                    <label class="form-label">Job Caring Out During the Shift: Defect/Failure reports, if any</label>
+                                    <textarea name="form-1-job" cols="40" rows="3" class="form-control" id="id_form-1-job"></textarea>
+                                </div>
+                                <div class="col-6 my-2">
+                                    <label class="form-label select-label">Report on Safety/ Near Miss Accidents:</label>
+                                    <textarea name="form-1-safetyreport" cols="40" rows="3" class="form-control" id="id_form-1-safetyreport"></textarea>
+                                </div>
+                            </div>
+                            </div>
+                            <!-- Step 2 input fields -->
+                            <div id="hidden">
+                            <div class="row align-items-start">
+                                <div class="col-4 offset-4 my-2">
+                                    <label class="form-label select-label">Shift Type</label>
+                                    <select name="form-2-shifttype" class="form-control" id="id_form-2-shifttype">
+                                        <option value="Day Shift" selected>First Shift</option>
+
+                                        <option value="Night Shift">Second Shift</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-start py-2">
+                                <div class="col-6 my-2">
+                                    <label class="form-label">Job Caring Out During the Shift: Defect/Failure reports, if any</label>
+                                    <textarea name="form-2-job" cols="40" rows="3" class="form-control" id="id_form-2-job"></textarea>
+                                </div>
+                                <div class="col-6 my-2">
+                                    <label class="form-label select-label">Report on Safety/ Near Miss Accidents:</label>
+                                    <textarea name="form-2-safetyreport" cols="40" rows="3" class="form-control" id="id_form-2-safetyreport"></textarea>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <br />
+                            <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
+                            <button class="button submit-btn" type="submit">Save</button>
+                            <button id="toggle">Hide THIRD div</button>
+                        </section>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <!-- <footer class="bg-light text-dark text-center">
+    <ul class="nav nav-tabs" style="background-color: #bc987e">
+        <li class="nav-item">
+            <a class="nav-link footer_links" href="#">Sitemap</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link footer_links" href="#">Privacy Policy</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link footer_links" href="#">Terms of Use</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link footer_links" href="">Disclaimer</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" style="color: black" href="">Copyright © Oil and Natural Gas Corporation Limited, All Rights Reserved.</a>
+        </li>
+    </ul>
+</footer> -->
+
+        <script>
+            const targetDiv = document.getElementById("hidden");
+            const btn = document.getElementById("toggle");
+            btn.onclick = function () {
+                if (targetDiv.style.display !== "none") {
+                    targetDiv.style.display = "none";
+                } else {
+                    targetDiv.style.display = "block";
+                }
+            };
+        </script>
+        <script src="/static/js/jquery-min.js"></script>
+
+        <script src="/static/js/rig-dropdown.js"></script>
+
+        <script src="/static/js/bootstrap-v5.js"></script>
+
+        <script src="/static/js/electrical_multi_step.js"></script>
+    </body>
+</html>

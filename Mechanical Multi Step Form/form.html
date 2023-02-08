@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <form id="myForm">
+    <div id="step1">
+      <input type="text" id="field1" required />
+      <input type="text" id="field2" required />
+      <button type="button" onclick="validateStep1()">Next</button>
+    </div>
+    <div id="step2">
+      <input type="text" id="field3" required />
+      <input type="text" id="field4" required />
+      <button type="button" onclick="validateStep2()">Next</button>
+    </div>
+    <div id="step3">
+      <input type="submit" id="submitBtn" disabled />
+    </div>
+  </form>
+<script src="form.js"></script>  
+   </body>
+
+</html>

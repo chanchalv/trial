@@ -1,0 +1,23 @@
+<head>
+    <title>jQuery - Enable or Disable Button</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body> 
+    <input type="text" id="tbName" />
+    <input type="text" id="tbName1" />
+    <input type="text" id="tbName2" />
+    <input type="text" id="tbName3" />
+    <input type="submit" id="submit" disabled="disabled" /> </body>
+<script>
+$(document).ready(function() {
+    $('#tbName' && '#tbName1' && '#tbName2' && '#tbName3').on('input change', function() {
+        if($(this).val() != '') {
+            $('#submit').prop('disabled', false);
+        } else {
+            $('#submit').prop('disabled', true);
+        }
+    });
+});
+</script>
+</html>

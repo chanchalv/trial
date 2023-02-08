@@ -32,6 +32,7 @@ const navigateToFormStep = (stepNumber) => {
   /**
    * Mark the current form step as active.
    */
+  
   formStepCircle.classList.remove(
     "form-stepper-unfinished",
     "form-stepper-completed"
@@ -66,6 +67,7 @@ const navigateToFormStep = (stepNumber) => {
 /**
  * Select all form navigation buttons, and loop through them.
  */
+function vForm() {
 document
   .querySelectorAll(".btn-navigate-form-step")
   .forEach((formNavigationBtn) => {
@@ -85,3 +87,10 @@ document
       navigateToFormStep(stepNumber);
     });
   });
+}
+
+ 
+
+ 
+                
+

@@ -68,20 +68,28 @@
                 <label>
                   <strong> QHSE|DOC. NO.</strong>
                 </label>
-                <input type="text" />
+                <input type="text"  />
               </div>
               <br />
               <div class="col">
                 <label> <strong> Name of Rig </strong></label>
-                <input type="text" />
+                <input type="text" id="user" />
               </div>
               <br />
               <div class="col">
                 <label>
                   <strong>Location</strong>
                 </label>
-                <input type="text" />
+                <input type="text" id="user"/>
               </div>
+              <div class="col" >
+                <label >
+                  <strong>Date</strong>
+                </label>
+                <input type="date"  id="user" />
+              </div>
+
+
               
             </div>
 
@@ -90,6 +98,7 @@
               class="button btn-navigate-form-step"
               type="button"
               step_number="2"
+              disabled id="submit"
             >
               Next
             </button>
@@ -370,6 +379,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="electrical_multi_step.js"></script>
+   
+    
   </body>
   
 </html>

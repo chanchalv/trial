@@ -12,7 +12,46 @@
     />
     <link rel="stylesheet" href="equipment_multi_step.css" />
     <title>Document</title>
+    <style>
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+      }
+
+      /* Modal Content */
+      .modal-content {
+        background-color: #fefefe;
+        margin: 20% auto; /* 20% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+      }
+
+      /* The Close Button */
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
   </head>
+
   <body>
     <div>
       <h1>Equipment Log Sheet</h1>
@@ -93,203 +132,234 @@
           method="POST"
         >
           <!-- Step 1 Content -->
+
           <section id="step-1" class="form-step">
             <h2 class="font-normal">Rig Details</h2>
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <p
+                  style="
+                    color: blue;
+                    font-weight: bolder;
+                    font-size: larger;
+                    text-align: center;
+                  "
+                >
+                  All fields are required. Please fill out the form completely.
+                </p>
+              </div>
+            </div>
             <hr />
+
             <br />
             <!-- Step 1 input fields -->
-            <div class="row align-items-start">
-              <div class="col">
-                <label>
-                  <strong>Rig/Well:</strong>
-                </label>
-                <input type="text" />
-              </div>
-              <br />
-              <div class="col">
-                <label> <strong> Rig/Operation </strong></label>
-                <input type="text" />
-              </div>
-              <br />
-            </div>
+            <form>
+              <input type="text" id="input1" required />
+              <input type="text" id="input2" required />
+              <input type="text" id="input3" required />
+              <!-- <button onclick="validateForm()"> Submit </button> -->
+            </form>
+
             <br />
+            <!-- <button onclick="validateForm()">Submit</button> -->
             <button
+              onclick="vForm()"
               class="button btn-navigate-form-step"
               type="button"
+              id="submitButton"
+              style="display: none"
               step_number="2"
             >
               Next
             </button>
           </section>
           <!-- Step 2 Content, default hidden on page load. -->
+
           <section id="step-2" class="form-step d-none">
             <h2 class="font-normal">Equipment Log Sheet</h2>
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <p
+                  style="
+                    color: blue;
+                    font-weight: bolder;
+                    font-size: larger;
+                    text-align: center;
+                  "
+                >
+                  All fields are required. Please fill out the form completely.
+                </p>
+              </div>
+            </div>
             <hr />
             <br />
             <!-- Step 2 input fields -->
-            <div class="row">
-              <div class="col col-3">
-                <select class="form-select">
-                  <option selected>Select Shift</option>
-                  <option value="1">Day Shift</option>
-                  <option value="2">Night Shift</option>
-                </select>
-              </div>
-            </div>
-            <br />
-
-            <br />
-            <div class="container text-center">
+            <form id="myForm">
               <div class="row">
-                <div class="col-sm-3">
-                  <strong> Equipment </strong>
-                </div>
-                <div class="col-sm-3">
-                  <!-- <label class="form-label select-label"></label> -->
-                  <select class="form-select" style="font-size: 15px">
-                    <option value="1">Carrier Engine-1</option>
-                    <option value="2">Carrier Engine-2</option>
-                    <option value="3">MP Engine-1</option>
-                    <option value="4">MP Engine-2</option>
-                    <option value="5">DG SET Engine-1</option>
-                    <option value="6">DG SET Engine-2</option>
-                    <option value="7">DG SET Engine-3</option>
-                    <option value="8">DG SET Engine-4</option>
-                    <option value="9">Transmission CE-1</option>
-                    <option value="10">Transmission CE-2</option>
-                    <option value="11">Compresser (Elect.)-1</option>
-                    <option value="12">Compresser (Elect.)-2</option>
-                    <option value="13">Compresser (Mech.)-1</option>
-                    <option value="14">Compresser (Mech.)-2</option>
-                    <option value="15">Diesel Engine Comp. (Mech.)-1</option>
-                    <option value="16">Diesel Engine Comp. (Mech.)-2</option>
-                    <option value="17">Mud Pump-1</option>
-                    <option value="18">Mud Pump-2</option>
-                    <option value="19">Torque Converter MP1</option>
-                    <option value="20">Torque Converter MP2</option>
-                    <option value="21">Fire Water Pump</option>
-                    <option value="">Others</option>
+                <div class="col col-3">
+                  <select class="form-select">
+                    <option selected>Select Shift</option>
+                    <option value="1">Day Shift</option>
+                    <option value="2">Night Shift</option>
                   </select>
                 </div>
+              </div>
+              <br />
 
-                <div class="col col-3">
-                  <strong>Other Equipment</strong>
-                </div>
-                <div class="col col-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Equipment"
-                  />
-                </div>
-              </div>
-            </div>
-            <br />
-            <div class="container text-center">
-              <div class="row">
-                <div class="col-sm-3">
-                  <strong> Water Temp. (&deg;C) </strong>
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" />
-                </div>
-                <div class="col-sm-3">
-                  <strong> Oil Temp. (&deg;C) </strong>
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" />
-                </div>
-              </div>
-            </div>
-            <br />
-            <div class="container text-center">
-              <div class="row">
-                <div class="col-sm-3">
-                  <strong> Oil Pressure (kg/cm<sup>3</sup>) </strong>
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" />
-                </div>
-                <div class="col-sm-3">
-                  <strong> Oil Used </strong>
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" />
-                </div>
-              </div>
-            </div>
-            <br />
+              <br />
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <strong> Equipment </strong>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- <label class="form-label select-label"></label> -->
+                    <select class="form-select" style="font-size: 15px">
+                      <option value="1">Carrier Engine-1</option>
+                      <option value="2">Carrier Engine-2</option>
+                      <option value="3">MP Engine-1</option>
+                      <option value="4">MP Engine-2</option>
+                      <option value="5">DG SET Engine-1</option>
+                      <option value="6">DG SET Engine-2</option>
+                      <option value="7">DG SET Engine-3</option>
+                      <option value="8">DG SET Engine-4</option>
+                      <option value="9">Transmission CE-1</option>
+                      <option value="10">Transmission CE-2</option>
+                      <option value="11">Compresser (Elect.)-1</option>
+                      <option value="12">Compresser (Elect.)-2</option>
+                      <option value="13">Compresser (Mech.)-1</option>
+                      <option value="14">Compresser (Mech.)-2</option>
+                      <option value="15">Diesel Engine Comp. (Mech.)-1</option>
+                      <option value="16">Diesel Engine Comp. (Mech.)-2</option>
+                      <option value="17">Mud Pump-1</option>
+                      <option value="18">Mud Pump-2</option>
+                      <option value="19">Torque Converter MP1</option>
+                      <option value="20">Torque Converter MP2</option>
+                      <option value="21">Fire Water Pump</option>
+                      <option value="">Others</option>
+                    </select>
+                  </div>
 
-            <div class="container text-center">
-              <div class="row">
-                <div class="col-sm-3">
-                  <strong> Working Hours </strong>
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" />
-                </div>
-                <div class="col-sm-3">
-                  <strong> Equip available Hrs. </strong>
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" />
+                  <div class="col col-3">
+                    <strong>Other Equipment</strong>
+                  </div>
+                  <div class="col col-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter Equipment"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <br />
-            <hr />
-            <div class="container text-center">
-              <div class="row">
-                <div class="col-sm-4 offset-4">
-                  <strong> POL Consumption</strong>
+              <br />
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <strong> Water Temp. (&deg;C) </strong>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <strong> Oil Temp. (&deg;C) </strong>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <br />
-            <div class="container text-center">
-              <div class="row">
-                <div class="col-sm-3">
-                  <strong> Oil Grade</strong>
-                </div>
-                <div class="col-sm-3">
-                  <input type="number" class="form-control" />
-                </div>
-              </div>
-            </div>
-            <br />
-            <div class="container text-center">
-              <div class="row">
-                <div class="col-sm-3">
-                  <strong>First Shift (litres)</strong>
-                </div>
-                <div class="col-sm-3">
-                  <input type="number" class="form-control" />
-                </div>
-                <div class="col-sm-3">
-                  <strong>Second Shift (litres)</strong>
-                </div>
-                <div class="col-sm-3">
-                  <input type="number" class="form-control" />
+              <br />
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <strong> Oil Pressure (kg/cm<sup>3</sup>) </strong>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <strong> Oil Used </strong>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <br />
-            <hr />
-            <div class="container text-center">
-              <div class="row">
-                <div class="col-sm-3">
-                  <strong>Requirement & Important Information:</strong>
-                </div>
-                <div class="col-sm-4">
-                  <textarea
-                    name="text"
-                    rows="3"
-                    class="form-control"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
+              <br />
 
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <strong> Working Hours </strong>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <strong> Equip available Hrs. </strong>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <br />
+              <hr />
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col-sm-4 offset-4">
+                    <strong> POL Consumption</strong>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <strong> Oil Grade</strong>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="number" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <br />
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <strong>First Shift (litres)</strong>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="number" class="form-control" />
+                  </div>
+                  <div class="col-sm-3">
+                    <strong>Second Shift (litres)</strong>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="number" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <br />
+              <hr />
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <strong>Requirement & Important Information:</strong>
+                  </div>
+                  <div class="col-sm-4">
+                    <textarea
+                      name="text"
+                      rows="3"
+                      class="form-control"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
             <button
               class="button btn-navigate-form-step"
               type="button"
@@ -298,8 +368,11 @@
               Prev
             </button>
             <button
+              onclick="vForm()"
               class="button btn-navigate-form-step"
               type="button"
+              id="submit1Button"
+              style="display: none"
               step_number="3"
             >
               Next
@@ -326,13 +399,13 @@
                 <div class="col-sm-3">
                   <strong>Tank 1</strong>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3" id="user2">
                   <input type="number" class="form-control" />
                 </div>
                 <div class="col-sm-3">
                   <strong>Tank 2</strong>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3" id="user2">
                   <input type="number" class="form-control" />
                 </div>
               </div>
@@ -558,5 +631,99 @@
       crossorigin="anonymous"
     ></script>
     <script src="equipment_multi_step.js"></script>
+
+    <script>
+      function validateForm() {
+        var inputs = document.querySelectorAll("input[required]");
+        var isValid = true;
+
+        for (var i = 0; i < inputs.length; i++) {
+          if (!inputs[i].value) {
+            isValid = false;
+            break;
+          }
+        }
+
+        if (!isValid) {
+          alert(
+            "All fields are required. Please fill out the form completely."
+          );
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+
+    <script>
+      const form = document.querySelector("#userAccountSetupForm");
+      var submitButton = document.querySelector("#submitButton");
+      // const submit2Button = document.querySelector("#submit2Button");
+
+      form.addEventListener("input", function () {
+        let filled = true;
+        for (const input of form.elements) {
+          if (input.nodeName === "INPUT" && input.value === "") {
+            filled = false;
+            break;
+          }
+        }
+        if (filled) {
+          submitButton.style.display = "block";
+        } else {
+          submitButton.style.display = "none";
+        }
+      });
+    </script>
+
+    <script>
+      var form1 = document.querySelector("#myForm");
+      var submit1Button = document.querySelector("#submit1Button");
+      // const submit2Button = document.querySelector("#submit2Button");
+
+      form1.addEventListener("input", function () {
+        let filled = true;
+        for (const input of form1.elements) {
+          if (input.nodeName === "INPUT" && input.value === "") {
+            filled = false;
+            break;
+          }
+        }
+        if (filled) {
+          submit1Button.style.display = "block";
+        } else {
+          submit1Button.style.display = "none";
+        }
+      });
+    </script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        //   var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the page loads, open the modal
+        window.onload = function () {
+          modal.style.display = "block";
+        };
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+          modal.style.display = "none";
+        };
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
+    </script>
+
+   
   </body>
 </html>

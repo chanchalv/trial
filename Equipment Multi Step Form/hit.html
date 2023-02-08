@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+      <form action="">
+        <input type="text" id="name" name="name" required>
+<input type="email" id="email" name="email" required>
+<input type="password" id="password" name="password" required>
+<input type="submit" value="Submit">
+
+      </form>
+
+
+
+      <script>
+        document.querySelector("input[type='submit']").addEventListener("click", function(event) {
+  event.preventDefault();
+  
+  if (!document.querySelector("#name").value) {
+    alert("Name is required");
+  } else if (!document.querySelector("#email").value) {
+    alert("Email is required");
+  } else if (!document.querySelector("#password").value) {
+    alert("Password is required");
+  } else {
+    document.querySelector("form").submit();
+  }
+});
+
+      </script>
+</body>
+</html>

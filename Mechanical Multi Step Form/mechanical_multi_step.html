@@ -166,8 +166,7 @@
             <button
               class="button btn-navigate-form-step"
               type="button"
-              step_number="2"
-            >
+              step_number="2">
               Next
             </button>
             <hr />
@@ -1075,5 +1074,37 @@
       crossorigin="anonymous"
     ></script>
     <script src="mechanical_multi_step.js"></script>
+
+
+    <!-- testing script -->
+
+
+    <!-- <script>
+      function checkEmptyFields() {
+        var section = document.getElementById("step-1");
+        var fields = section.getElementsByTagName("input");
+        var isEmpty = true;
+        for (var i = 0; i < fields.length; i++) {
+          if (fields[i].value !== "") {
+            isEmpty = false;
+            break;
+          }
+        }
+        if (isEmpty) {
+          section.setAttribute("disabled", true);
+        } else {
+          section.removeAttribute("disabled");
+        }
+      }
+      
+      var fields = document.getElementById("step-1").getElementsByTagName("input");
+      for (var i = 0; i < fields.length; i++) {
+        fields[i].addEventListener("change", checkEmptyFields);
+      }
+    </script> -->
+
+
+
+
   </body>
 </html>
